@@ -22,9 +22,6 @@ if ($_SESSION['user_role'] !== 'admin') {
 
   <?php
 session_start(); // Assurez-vous d'avoir démarré la session au début du fichier
-echo '<pre>';
-print_r($_SESSION);
-echo '</pre>';
 // Vérifier si la variable de session 'role' existe
 if (isset($_SESSION['user_role'])) {
   // La variable de session existe, vérifier le rôle de l'utilisateur
