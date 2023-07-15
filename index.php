@@ -2,23 +2,14 @@
 <html>
 <head>
   <title>Mon Site - Accueil</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
   <header>
     <h1>Bienvenue sur Mon Site</h1>
   </header>
 
-  <nav>
-    <ul>
-      <li><a href="welcome_page.php">Accueil</a></li>
-      <li><a href="apropos.php">À propos</a></li>
-      <li><a href="services.php">Services</a></li>
-      <li><a href="actualites.php">Actualités</a></li>
-      <li><a href="contact.php">Contact</a></li>
-      <li><a href="connexion.php">Se connecter</a></li>
-      <li><a href="inscription.php">S'inscrire</a></li>
-    </ul>
-  </nav>
+  <?php include 'navbar.html'; ?>
 
   <main>
     <section>

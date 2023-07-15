@@ -2,15 +2,14 @@
 <html>
 <head>
   <title>Mon Site - Connexion</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
   <header>
     <h1>Connexion</h1>
   </header>
 
-  <nav>
-    <!-- Ajoutez ici votre barre de navigation si nécessaire -->
-  </nav>
+  <?php include 'navbar.html'; ?>
 
   <main>
     <h2>Formulaire de connexion</h2>
