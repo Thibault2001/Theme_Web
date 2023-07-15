@@ -1,30 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Mon Site - Avis</title>
+  <title>Avis</title>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
   <header>
-    <h1>Avis de nos clients</h1>
+    <h1>Avis</h1>
   </header>
-
   <?php include 'navbar.html'; ?>
+  <div id="reviews">
+    <?php
+    // Connectez-vous à la base de données (assurez-vous que vous avez inclus le code de connexion)
+    $servername = "localhost";
+    $username = "Thibault";
+    $password = "MySQL2023";
+    $dbname = "siteweb";
 
-  <main>
-    <h2>Témoignage 1</h2>
-    <p>Auteur : Nom du client</p>
-    <p>"Contenu du témoignage 1..."</p>
+    // Créer une connexion
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-    <h2>Témoignage 2</h2>
-    <p>Auteur : Nom du client</p>
-    <p>"Contenu du témoignage 2..."</p>
+    // Vérifier la connexion
+    if ($conn->connect_error) {
+      die("Échec de la connexion à la base de données : " . $conn->connect_error);
+    }
 
-    <h2>Témoignage 3</h2>
-    <p>Auteur : Nom du client</p>
-    <p>"Contenu du témoignage 3..."</p>
-  </main>
+    // Préparation de la requête SQL de sélection des avis validés
+    $sql = "SELECT reviews.*, users.username
+    FROM reviews
+    INNER JOIN users ON reviews.user_id = users.id
+    WHERE reviews.validated = 1;
+    ";
 
+    // Exécution de la requête
+    $result = $conn->query($sql);
+
+    // Vérification si des avis validés ont été trouvés
+    if ($result->num_rows > 0) {
+      // Parcourir les résultats et afficher les avis validés
+      while ($row = $result->fetch_assoc()) {
+        echo '<div class="review">';
+        echo '<h3>' . $row['name'] . '</h3>';
+        echo '<p>Note : ' . $row['rating'] . ' étoiles</p>';
+        echo '<p>Avis : ' . $row['review'] . '</p>';
+        echo '</div>';
+      }
+    } else {
+      echo 'Aucun avis validé trouvé.';
+    }
+
+    // Fermez la connexion à la base de données
+    $conn->close();
+    ?>
+  </div>
+  <?php include 'avis.html'; ?>
   <footer>
     <p>© 2023 Mon Site. Tous droits réservés.</p>
   </footer>
