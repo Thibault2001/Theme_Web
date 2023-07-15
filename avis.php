@@ -9,28 +9,28 @@
     <h1>Avis</h1>
   </header>
   <?php
-session_start(); // Assurez-vous d'avoir démarré la session au début du fichier
+  session_start(); // Assurez-vous d'avoir démarré la session au début du fichier
 
-// Vérifier si la variable de session 'role' existe
-if (isset($_SESSION['user_role'])) {
-  // La variable de session existe, vérifier le rôle de l'utilisateur
-  if ($_SESSION['user_role'] === 'user') {
-    // Inclure la userNavbar
-    include 'userNavbar.html';
-  } elseif ($_SESSION['user_role'] === 'admin') {
-    // Inclure la adminNavbar
-    include 'adminNavbar.html';
+  // Vérifier si la variable de session 'role' existe
+  if (isset($_SESSION['user_role'])) {
+    // La variable de session existe, vérifier le rôle de l'utilisateur
+    if ($_SESSION['user_role'] === 'user') {
+      // Inclure la userNavbar
+      include 'userNavbar.html';
+    } elseif ($_SESSION['user_role'] === 'admin') {
+      // Inclure la adminNavbar
+      include 'adminNavbar.html';
+    } else {
+      // Rôle non défini
+      // Inclure une navbar par défaut
+      include 'noUserNavbar.html';
+    }
   } else {
-    // Rôle non défini
+    // Utilisateur non connecté
     // Inclure une navbar par défaut
     include 'noUserNavbar.html';
   }
-} else {
-  // Utilisateur non connecté
-  // Inclure une navbar par défaut
-  include 'noUserNavbar.html';
-}
-?>
+  ?>
 
   <div id="reviews">
     <?php
@@ -50,10 +50,9 @@ if (isset($_SESSION['user_role'])) {
 
     // Préparation de la requête SQL de sélection des avis validés
     $sql = "SELECT reviews.*, users.username
-    FROM reviews
-    INNER JOIN users ON reviews.user_id = users.id
-    WHERE reviews.validated = 1;
-    ";
+            FROM reviews
+            INNER JOIN users ON reviews.user_id = users.id
+            WHERE reviews.validated = 1";
 
     // Exécution de la requête
     $result = $conn->query($sql);
