@@ -12,12 +12,12 @@
 session_start(); // Assurez-vous d'avoir démarré la session au début du fichier
 
 // Vérifier si la variable de session 'role' existe
-if (isset($_SESSION['role'])) {
+if (isset($_SESSION['user_role'])) {
   // La variable de session existe, vérifier le rôle de l'utilisateur
-  if ($_SESSION['role'] === 'user') {
+  if ($_SESSION['user_role'] === 'user') {
     // Inclure la userNavbar
     include 'userNavbar.html';
-  } elseif ($_SESSION['role'] === 'admin') {
+  } elseif ($_SESSION['user_role'] === 'admin') {
     // Inclure la adminNavbar
     include 'adminNavbar.html';
   } else {
