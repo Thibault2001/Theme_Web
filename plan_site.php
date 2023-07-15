@@ -14,7 +14,7 @@
   <main>
     <h2>Pages principales</h2>
     <ul>
-      <li><a href="welcome_page.php">Accueil</a></li>
+      <li><a href="index.php">Accueil</a></li>
       <li><a href="apropos.php">À propos</a></li>
       <li><a href="services.php">Services</a></li>
       <li><a href="actualites.php">Actualités</a></li>
