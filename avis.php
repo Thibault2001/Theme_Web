@@ -62,7 +62,7 @@
       // Parcourir les résultats et afficher les avis validés
       while ($row = $result->fetch_assoc()) {
         echo '<div class="review">';
-        echo '<h3>' . $row['name'] . '</h3>';
+        echo '<h3>' . $row['username'] . '</h3>';
         echo '<p>Note : ' . $row['rating'] . ' étoiles</p>';
         echo '<p>Avis : ' . $row['review'] . '</p>';
         echo '</div>';

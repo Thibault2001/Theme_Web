@@ -26,7 +26,7 @@ if ($conn->connect_error) {
 $userId = $_SESSION['user_id']; // À adapter en fonction de votre logique d'authentification
 
 // Préparation de la requête SQL d'insertion de l'avis avec l'identifiant de l'utilisateur
-$sql = "INSERT INTO reviews (name, rating, review, user_id) VALUES ('$name', $rating, '$review', $userId)";
+$sql = "INSERT INTO reviews (rating, review, user_id) VALUES ($rating, '$review', $userId)";
 
 // Exécution de la requête
 if ($conn->query($sql) === TRUE) {
